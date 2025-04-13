@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { HiBell, HiCog6Tooth, HiMiniBars3 } from "react-icons/hi2";
-import CrossLine from "./components/CrossLine";
+// import CrossLine from "./components/CrossLine";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 
@@ -33,7 +33,11 @@ function AppLayout() {
             <img src="./logo.png" alt="img" />
             <p className="text-3xl font-bold px-2">Coinex.</p>
           </NavLink>
-          <CrossLine borderDetail={"dotted"} />
+          {/* <CrossLine /> */}
+          <p
+            className={`border-b-2 border-dotted border-gray-200 mt-[1.25rem] mb-4`}
+          ></p>
+          {/* borderDetail={"dotted"}  */}
           <SearchBar />
           <nav className="mt-4">
             <p className="text-gray-400 mb-2">Main Menu</p>
@@ -68,7 +72,7 @@ function AppLayout() {
           className="flex flex-col flex-grow"
         >
           <div className="flex gap-4 items-center">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center">
               <button
                 className="cursor-pointer"
                 onClick={() => setMenuOpen(true)}
@@ -82,7 +86,11 @@ function AppLayout() {
               <img src="./user.png" alt="User" className="h-[2.5rem]" />
             </div>
           </div>
-          <CrossLine borderDetail={"solid"} />
+          {/* <CrossLine /> */}
+          <p
+            className={`border-b-2 border-solid border-gray-200 mt-[1rem] mb-4`}
+          ></p>
+          {/* borderDetail={"solid"}  */}
         </motion.div>
 
         {/* main content */}

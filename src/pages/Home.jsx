@@ -7,13 +7,22 @@ import {
   HiMiniBars3,
   HiWallet,
 } from "react-icons/hi2";
-import CrossLine from "../components/CrossLine";
+// import CrossLine from "../components/CrossLine";
 import DepositBtn from "../components/DepositBtn";
 import WithdrawBtn from "../components/WithdrawBtn";
 import MoreActionsBtn from "../components/MoreActionsBtn";
 import MyAssets from "../components/MyAssets";
+import { IoIosGitMerge } from "react-icons/io";
+import { useState } from "react";
+import SelectableBtn from "../components/SelectableBtn";
 
 function Home() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
@@ -35,7 +44,11 @@ function Home() {
           <span>10.5% (+$908)</span>
         </div>
 
-        <CrossLine size={"1"} borderDetail={"dashed"} color="gray-50" />
+        {/* <CrossLine /> */}
+        <p
+          className={`border-b-2 border-dashed border-gray-200 mt-[1.25rem] mb-4`}
+        ></p>
+        {/* size={"1"} borderDetail={"dashed"} color="white-50"  */}
 
         <div className="grid grid-cols-[1fr_1fr_auto] gap-3">
           <DepositBtn />
@@ -45,9 +58,51 @@ function Home() {
       </div>
 
       {/* my assets */}
-      <motion.div className="gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl">
+      <div className="flex flex-col gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mb-4 md:mb-0">
         <MyAssets />
-      </motion.div>
+      </div>
+
+      <div className="gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mt-0 md:mt-4">
+        {/*header pentru chart */}
+        <div className="flex justify-between">
+          <div className=" border-gray-500">
+            <select className="border-2 border-gray-300 rounded-lg text-lg text-gray-500 p-2 focus:outline-0">
+              <option value="Ethereum">ETH Ethereum</option>
+              <option value="Bitcoin">BTC Bitcoin</option>
+              <option value="Polkadot">DOT Polkadot</option>
+              <option value="Cardano">ADA Cardano</option>
+            </select>
+          </div>
+
+          <div className="flex gap-2 justify-end border-2 bg-gray-100 border-gray-100 rounded-lg p-2">
+            {/* <div className=" flex items-center text-gray-400">
+              <IoIosGitMerge />
+              </div> */}
+            <div className="flex items-center">
+              {["1D", "7D", "1M", "1Y", "ALL"].map((label, index) => (
+                <SelectableBtn
+                  key={index}
+                  isActive={activeIndex === index}
+                  onClick={() => handleClick(index)}
+                >
+                  {label}
+                </SelectableBtn>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* <CrossLine borderDetail={"solid"} /> */}
+        {/* chart */}
+        <div className="mt-4">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia
+          corrupti sint adipisci placeat ab autem necessitatibus accusamus
+          perferendis sed? Blanditiis nostrum incidunt veniam officiis animi ex
+          possimus reprehenderit cupiditate quasi? Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Quae ipsum sed porro nisi laborum.
+          Numquam suscipit corporis, voluptates temporibus voluptatum rerum est
+          amet nemo. Animi corporis quibusdam delectus impedit tenetur?
+        </div>
+      </div>
     </motion.div>
   );
 }
