@@ -1,16 +1,14 @@
 import { HiBarsArrowUp, HiBeaker } from "react-icons/hi2";
 import SearchBar from "../components/SearchBar";
 import { AnimatePresence, motion } from "motion/react";
-import { useQuery } from "@tanstack/react-query";
-import { getUser } from "../services/api";
 
 function Market() {
-  const { data } = useQuery({
-    queryKey: ["users"],
-    queryFn: getUser,
-  });
+  // const { data } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: getUser,
+  // });
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <motion.div

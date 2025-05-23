@@ -38,13 +38,13 @@ function Home() {
       {/* my portfolio */}
       <div className="col-span-1 bg-[url('background-image.jpg')] bg-cover bg-center p-4 rounded-2xl mb-4 xl:mb-0 mr-2 bg-white/10 backdrop-blur-md border border-white/10">
         <div className="flex items-center gap-2 mb-4">
-          <HiWallet className="text-gray-200 text-xl" />
-          <p className="text-gray-200 text-xl">My Portfolio</p>
+          <HiWallet className="text-white text-xl" />
+          <p className="text-white text-xl">My Portfolio</p>
         </div>
         <div className="flex items-center mb-4 text-white">
           <p className="text-3xl">$23,569.00</p>
         </div>
-        <div className="flex items-center mb-4 text-gray-200">
+        <div className="flex items-center mb-4 text-white">
           <HiArrowSmallUp />
           <span>10.5% (+$908)</span>
         </div>
@@ -62,14 +62,14 @@ function Home() {
         </div>
       </div>
       {/* my assets */}
-      <div className="flex flex-col gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mb-4 md:mb-0">
+      <div className="flex flex-col gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mb-4 md:mb-0 bg-black/70">
         <MyAssets />
       </div>
-      <div className="gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mt-0 md:mt-4 ">
+      <div className="gap-3 border-2 border-gray-300 col-span-1 lg:col-span-2 p-4 rounded-2xl mt-0 md:mt-4 bg-black/70">
         {/*header pentru chart */}
         <div className="flex justify-between">
           <div className=" border-gray-500">
-            <select className="border-2 border-gray-300 rounded-lg text-lg text-gray-500 p-2 focus:outline-0">
+            <select className="border-2 border-gray-300 rounded-lg text-lg text-white p-2 focus:outline-0">
               <option value="Ethereum">ETH Ethereum</option>
               <option value="Bitcoin">BTC Bitcoin</option>
               <option value="Polkadot">DOT Polkadot</option>
@@ -99,7 +99,7 @@ function Home() {
           className={`border-b-2 border-solid border-gray-200 mt-[1.25rem] mb-4`}
         ></p>
         {/* chart */}
-        <div className="mt-4">
+        <div className="mt-4 text-white">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia
           corrupti sint adipisci placeat ab autem necessitatibus accusamus
           perferendis sed? Blanditiis nostrum incidunt veniam officiis animi ex
@@ -110,7 +110,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="col-span-1 p-4 rounded-2xl mb-4 xl:mb-0 bg-white/10 backdrop-blur-md border-2 border-gray-300 mt-4  md:mb-0 md:ml-2">
+      <div className="col-span-1 p-4 rounded-2xl mb-4 xl:mb-0 bg-black/70 backdrop-blur-md border-2 border-gray-300 mt-4  md:mb-0 md:ml-2">
         <div className="grid grid-cols-2 border-2 bg-gray-100 border-gray-100 rounded-lg p-2">
           {typeOfTransaction.map((label, index) => (
             <SelectableBtn
