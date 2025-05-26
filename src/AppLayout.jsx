@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { HiBell, HiCog6Tooth, HiMiniBars3 } from "react-icons/hi2";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
+
+const fancyBg = "bg-gradient-to-br from-[#111827] via-[#1e1b4b] to-[#0f172a]";
+const borderGlow = "border border-indigo-500/30 shadow-[0_0_10px_#6366f1aa]";
 
 function AppLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,10 +14,15 @@ function AppLayout() {
 
   const videoRef = useRef(null);
 
-  // Fallback: dacă video-ul nu pornește în 5 secunde, continuă
+  const { pathname } = useLocation();
+  const path =
+    pathname.split("/")[1].length > 0
+      ? pathname.split("/")[1].charAt(0).toUpperCase() +
+        pathname.split("/")[1].slice(1)
+      : "Dashboard";
+
   useEffect(() => {
     const fallback = setTimeout(() => {
-      console.warn("⚠️ Video fallback triggered");
       setVideoReady(true);
     }, 1000);
     return () => clearTimeout(fallback);
@@ -35,7 +43,6 @@ function AppLayout() {
       <video
         ref={videoRef}
         onCanPlayThrough={() => {
-          console.log("🎬 Video ready");
           setVideoReady(true);
           if (videoRef.current) {
             videoRef.current.play().catch((err) => {
@@ -63,7 +70,7 @@ function AppLayout() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
       >
         {/* Sidebar */}
-        <aside className="hidden md:flex flex-col h-screen md:w-64 lg:w-84 border-r-[1px] border-white bg-black/70 p-4 overflow-y-auto">
+        {/* <aside className="hidden md:flex flex-col h-screen md:w-64 lg:w-84 border-r-[1px] border-white bg-black/70 p-4 overflow-y-auto">
           <div className="flex flex-col flex-grow">
             <NavLink to="/" className="flex items-center">
               <img src="./logo.png" alt="Logo" />
@@ -93,6 +100,44 @@ function AppLayout() {
               <span className="px-2">Settings</span>
             </NavLink>
           </div>
+        </aside> */}
+
+        <aside
+          className={`${fancyBg} ${borderGlow} hidden md:flex flex-col h-screen md:w-64 lg:w-84 border-r-[1px]  p-4 overflow-y-auto`}
+        >
+          <div className="flex flex-col flex-grow">
+            <NavLink to="/" className="flex items-center">
+              <img src="./logo.png" alt="Logo" />
+              <p className="text-3xl font-bold px-2 text-violet-400">Coinex.</p>
+            </NavLink>
+
+            <p className="border-b-2 border-dotted border-violet-500/30 mt-5 mb-4"></p>
+
+            <SearchBar />
+
+            <nav className="mt-4">
+              <p className="text-violet-300 mb-2">Main Menu</p>
+              <ul>
+                <li className="mb-2 text-xl">
+                  <Navbar />
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="flex flex-col text-xl mt-4">
+            <NavLink
+              to="/settings"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-violet-300 p-2 rounded  flex items-center"
+                  : "text-white p-2 rounded hover:bg-violet-500/70 flex items-center"
+              }
+            >
+              <HiCog6Tooth />
+              <span className="px-2">Settings</span>
+            </NavLink>
+          </div>
         </aside>
 
         {/* Main content */}
@@ -101,7 +146,7 @@ function AppLayout() {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="flex flex-col flex-grow "
+            className="flex flex-col flex-grow"
           >
             <div className="flex gap-4 items-center">
               <button
@@ -110,7 +155,7 @@ function AppLayout() {
               >
                 <HiMiniBars3 className="md:hidden text-2xl text-gray-400" />
               </button>
-              <p className="text-3xl font-bold text-white">Dashboard</p>
+              <p className="text-3xl font-bold text-violet-400">{path}</p>
               <div className="flex flex-1 justify-end items-center gap-2">
                 <HiBell className="text-4xl p-1 text-white" />
                 <img

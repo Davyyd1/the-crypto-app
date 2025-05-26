@@ -23,8 +23,8 @@ function Navbar() {
           to={item.to}
           className={({ isActive }) =>
             isActive
-              ? "text-orange-500 p-2 rounded  flex items-center"
-              : "text-white p-2 rounded hover:bg-orange-500/70 flex items-center"
+              ? "text-violet-300 p-2 rounded  flex items-center"
+              : "text-white p-2 rounded hover:bg-violet-500/70 flex items-center"
           }
           key={item.name}
         >

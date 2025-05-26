@@ -1,6 +1,7 @@
 import { HiBarsArrowUp, HiBeaker } from "react-icons/hi2";
 import SearchBar from "../components/SearchBar";
 import { AnimatePresence, motion } from "motion/react";
+import { useLocation, useParams } from "react-router";
 
 function Market() {
   // const { data } = useQuery({
@@ -8,17 +9,18 @@ function Market() {
   //   queryFn: getUser,
   // });
 
-  // console.log(data);
+  const fancyBg = "bg-gradient-to-br from-[#111827] via-[#1e1b4b] to-[#0f172a]";
+  const borderGlow = "border border-indigo-500/30 shadow-[0_0_10px_#6366f1aa]";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-      className="border-2 border-gray-200 rounded-lg p-2"
+      className={`border-2 border-gray-200 rounded-lg p-2 ${fancyBg} ${borderGlow}`}
     >
       <div className="flex items-center">
-        <div className="flex items-center gap-1 text-gray-500">
+        <div className="flex items-center gap-1 text-white">
           <span className="border-2 border-gray-300 rounded-lg p-1">
             <HiBarsArrowUp />
           </span>
@@ -26,7 +28,7 @@ function Market() {
         </div>
         <div className="flex flex-1 justify-end items-center gap-2">
           <SearchBar />
-          <div className="border-2 border-gray-300 rounded-lg p-2">
+          <div className="border-2 border-gray-300 rounded-lg p-2 text-white">
             <HiBeaker />
           </div>
         </div>
@@ -46,7 +48,7 @@ function Market() {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 bg-gray-100 text-gray-700">
             <tr className="hover:bg-gray-50">
               <td className="px-4 py-3 whitespace-nowrap">BTC Bitcoin</td>
               <td className="px-4 py-3 whitespace-nowrap">$59,101.98</td>
